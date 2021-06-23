@@ -1,3 +1,4 @@
+import 'package:flutter_mobx_graphql/errors/failures.dart';
 import 'package:flutter_mobx_graphql/models/models.dart';
 import 'package:graphql/client.dart';
 
@@ -29,19 +30,24 @@ class SpotifyApiDataSource implements ISpotifyApiDataSource {
 
       final response = await _client.query(
         QueryOptions(
-          documentNode: gql(query),
+          document: gql(query),
           variables: {
             'name': name,
           },
         ),
       );
 
-      if (response.hasException) {
-        throw response.exception;
+      final exception = response.exception;
+      if (exception != null) {
+        throw exception;
       }
 
-      final data = Data.fromJson(response.data);
-      return data.queryArtists;
+      final data = response.data;
+      if (data != null) {
+        return Data.fromJson(data).queryArtists;
+      } else {
+        throw NoResultsFoundFailure();
+      }
     } catch (e) {
       throw e;
     }

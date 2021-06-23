@@ -1,98 +1,70 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter_mobx_graphql/utils/json.dart';
+
+part 'models.g.dart';
+
+@immutable
+@jsonSerializable
 class SearchArtists {
-  Data data;
-
-  SearchArtists({this.data});
-
-  SearchArtists.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.data != null) {
-      data['data'] = this.data.toJson();
-    }
-    return data;
-  }
-}
-
-class Data {
-  List<Artist> queryArtists;
-
-  Data({this.queryArtists});
-
-  Data.fromJson(Map<String, dynamic> json) {
-    if (json['queryArtists'] != null) {
-      queryArtists = new List<Artist>();
-      json['queryArtists'].forEach((v) {
-        queryArtists.add(new Artist.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.queryArtists != null) {
-      data['queryArtists'] = this.queryArtists.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Artist {
-  String name;
-  String id;
-  String image;
-  List<Album> albums;
-
-  Artist({this.name, this.id, this.image, this.albums});
-
-  Artist.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    id = json['id'];
-    image = json['image'];
-    if (json['albums'] != null) {
-      albums = new List<Album>();
-      json['albums'].forEach((v) {
-        albums.add(new Album.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['id'] = this.id;
-    data['image'] = this.image;
-    if (this.albums != null) {
-      data['albums'] = this.albums.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Album {
-  String name;
-  String id;
-  String image;
-
-  Album({
-    this.name,
-    this.id,
-    this.image,
+  const SearchArtists({
+    required this.data,
   });
 
-  Album.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    id = json['id'];
-    image = json['image'];
-  }
+  factory SearchArtists.fromJson(Json json) => _$SearchArtistsFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['id'] = this.id;
-    data['image'] = this.image;
-    return data;
-  }
+  final Data data;
+
+  Json toJson() => _$SearchArtistsToJson(this);
+}
+
+@immutable
+@jsonSerializable
+class Data {
+  const Data({
+    required this.queryArtists,
+  });
+
+  factory Data.fromJson(Json json) => _$DataFromJson(json);
+
+  final List<Artist> queryArtists;
+
+  Json toJson() => _$DataToJson(this);
+}
+
+@immutable
+@jsonSerializable
+class Artist {
+  const Artist({
+    required this.id,
+    required this.name,
+    required this.image,
+    this.albums,
+  });
+
+  factory Artist.fromJson(Json json) => _$ArtistFromJson(json);
+
+  final String id;
+  final String name;
+  final String image;
+  final List<Album>? albums;
+
+  Json toJson() => _$ArtistToJson(this);
+}
+
+@immutable
+@jsonSerializable
+class Album {
+  const Album({
+    required this.id,
+    required this.name,
+    required this.image,
+  });
+
+  factory Album.fromJson(Json json) => _$AlbumFromJson(json);
+
+  final String id;
+  final String name;
+  final String image;
+
+  Json toJson() => _$AlbumToJson(this);
 }

@@ -13,9 +13,13 @@ class ArtistsScreenArgs {
 
 class ArtistsScreen extends StatefulWidget {
   static const String routeName = "/artists-screen";
+
   final String name;
 
-  const ArtistsScreen({Key key, this.name}) : super(key: key);
+  const ArtistsScreen({
+    Key? key,
+    required this.name,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -25,11 +29,11 @@ class ArtistsScreen extends StatefulWidget {
 
 class _ArtistsScreenState extends State<ArtistsScreen> {
   String get _name => widget.name;
-  ArtistsStore _store;
+  late ArtistsStore _store;
 
   @override
   void didChangeDependencies() {
-    _store ??= Provider.of<ArtistsStore>(context);
+    _store = Provider.of<ArtistsStore>(context);
     _store.searchArtists(_name);
     super.didChangeDependencies();
   }

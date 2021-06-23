@@ -11,7 +11,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  TextEditingController _queryController;
+  late TextEditingController _queryController;
 
   @override
   void initState() {

@@ -6,7 +6,10 @@ import 'package:flutter_mobx_graphql/models/models.dart';
 class ArtistsList extends StatelessWidget {
   final List<Artist> artists;
 
-  const ArtistsList({Key key, this.artists}) : super(key: key);
+  const ArtistsList({
+    Key? key,
+    required this.artists,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +33,15 @@ class ArtistsList extends StatelessWidget {
 class _ArtistsListItem extends StatelessWidget {
   final Artist artist;
 
-  const _ArtistsListItem({Key key, this.artist}) : super(key: key);
+  const _ArtistsListItem({
+    Key? key,
+    required this.artist,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final albums = artist.albums;
+
     return Container(
       margin: const EdgeInsets.only(
         bottom: 12,
@@ -76,7 +84,7 @@ class _ArtistsListItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    artist.albums != null ? "${artist.albums.length} albums" : "No album",
+                    albums != null ? "${albums.length} albums" : "No album",
                     style: TextStyle(
                       color: Colors.grey.shade600,
                       fontSize: 10,

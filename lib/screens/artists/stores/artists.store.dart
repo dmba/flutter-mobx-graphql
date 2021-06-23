@@ -1,4 +1,4 @@
-import 'package:either_option/either_option.dart';
+import 'package:either_dart/either.dart';
 import 'package:flutter_mobx_graphql/errors/failures.dart';
 import 'package:flutter_mobx_graphql/models/models.dart';
 import 'package:flutter_mobx_graphql/repositories/spotify_api_repository.dart';
@@ -7,9 +7,7 @@ import 'package:mobx/mobx.dart';
 
 part 'artists.store.g.dart';
 
-class ArtistsStore extends _ArtistsStore with _$ArtistsStore {
-  ArtistsStore(ISpotifyApiRepository repository) : super(repository);
-}
+class ArtistsStore = _ArtistsStore with _$ArtistsStore;
 
 abstract class _ArtistsStore with Store {
   _ArtistsStore(this._repository) {
@@ -21,12 +19,12 @@ abstract class _ArtistsStore with Store {
   /// By default, a [Store] doesn't have a equivalent [reset] function
   /// To re-initialize its state
   @action
-  reset() {
+  void reset() {
     this.init();
   }
 
   @action
-  init() {
+  void init() {
     _artistsFuture = null;
     artistsResult = null;
     errorMessage = null;
@@ -34,22 +32,23 @@ abstract class _ArtistsStore with Store {
 
   /// Private value that returns the [Either] type result
   @observable
-  ObservableFuture<Either<Failure, List<Artist>>> _artistsFuture;
+  ObservableFuture<Either<Failure, List<Artist>>>? _artistsFuture;
 
   /// Evaluated result value that is observed in the UI to display list of artists
   @observable
-  List<Artist> artistsResult;
+  List<Artist>? artistsResult;
 
   /// Optional error message shown that is observed and presented in the UI
   @observable
-  String errorMessage;
+  String? errorMessage;
 
   /// Notifies the UI what should be the [state] of the screen
   /// whenever an API call is invoked or returned a result
   @computed
   StoreState get state {
-    if (_artistsFuture != null &&
-        _artistsFuture.status == FutureStatus.pending) {
+    final future = _artistsFuture;
+
+    if (future != null && future.status == FutureStatus.pending) {
       return StoreState.loading;
     } else if (artistsResult == null) {
       return StoreState.initial;
@@ -60,9 +59,11 @@ abstract class _ArtistsStore with Store {
 
   @action
   searchArtists(String name) async {
-    _artistsFuture = ObservableFuture(_repository.getArtists(name));
+    final future = _artistsFuture = ObservableFuture(
+      _repository.getArtists(name),
+    );
 
-    final either = await _artistsFuture;
+    final either = await future;
 
     artistsResult = either.fold(
       (l) {

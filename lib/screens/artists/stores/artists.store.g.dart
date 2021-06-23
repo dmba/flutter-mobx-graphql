@@ -9,7 +9,7 @@ part of 'artists.store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ArtistsStore on _ArtistsStore, Store {
-  Computed<StoreState> _$stateComputed;
+  Computed<StoreState>? _$stateComputed;
 
   @override
   StoreState get state => (_$stateComputed ??=
@@ -19,13 +19,13 @@ mixin _$ArtistsStore on _ArtistsStore, Store {
   final _$_artistsFutureAtom = Atom(name: '_ArtistsStore._artistsFuture');
 
   @override
-  ObservableFuture<Either<Failure, List<Artist>>> get _artistsFuture {
+  ObservableFuture<Either<Failure, List<Artist>>>? get _artistsFuture {
     _$_artistsFutureAtom.reportRead();
     return super._artistsFuture;
   }
 
   @override
-  set _artistsFuture(ObservableFuture<Either<Failure, List<Artist>>> value) {
+  set _artistsFuture(ObservableFuture<Either<Failure, List<Artist>>>? value) {
     _$_artistsFutureAtom.reportWrite(value, super._artistsFuture, () {
       super._artistsFuture = value;
     });
@@ -34,13 +34,13 @@ mixin _$ArtistsStore on _ArtistsStore, Store {
   final _$artistsResultAtom = Atom(name: '_ArtistsStore.artistsResult');
 
   @override
-  List<Artist> get artistsResult {
+  List<Artist>? get artistsResult {
     _$artistsResultAtom.reportRead();
     return super.artistsResult;
   }
 
   @override
-  set artistsResult(List<Artist> value) {
+  set artistsResult(List<Artist>? value) {
     _$artistsResultAtom.reportWrite(value, super.artistsResult, () {
       super.artistsResult = value;
     });
@@ -49,13 +49,13 @@ mixin _$ArtistsStore on _ArtistsStore, Store {
   final _$errorMessageAtom = Atom(name: '_ArtistsStore.errorMessage');
 
   @override
-  String get errorMessage {
+  String? get errorMessage {
     _$errorMessageAtom.reportRead();
     return super.errorMessage;
   }
 
   @override
-  set errorMessage(String value) {
+  set errorMessage(String? value) {
     _$errorMessageAtom.reportWrite(value, super.errorMessage, () {
       super.errorMessage = value;
     });
@@ -72,7 +72,7 @@ mixin _$ArtistsStore on _ArtistsStore, Store {
       ActionController(name: '_ArtistsStore');
 
   @override
-  dynamic reset() {
+  void reset() {
     final _$actionInfo = _$_ArtistsStoreActionController.startAction(
         name: '_ArtistsStore.reset');
     try {
@@ -83,7 +83,7 @@ mixin _$ArtistsStore on _ArtistsStore, Store {
   }
 
   @override
-  dynamic init() {
+  void init() {
     final _$actionInfo =
         _$_ArtistsStoreActionController.startAction(name: '_ArtistsStore.init');
     try {

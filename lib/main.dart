@@ -20,19 +20,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  HttpLink _httpLink;
-  GraphQLClient _client;
-  ISpotifyApiDataSource _spotifyApiDataSource;
-  ISpotifyApiRepository _spotifyApiRepository;
+  late HttpLink _httpLink;
+  late GraphQLClient _client;
+  late ISpotifyApiDataSource _spotifyApiDataSource;
+  late ISpotifyApiRepository _spotifyApiRepository;
 
   @override
   void initState() {
     _httpLink = HttpLink(
-      uri: 'https://spotify-graphql-server.herokuapp.com/graphql',
+      'https://spotify-graphql-server.herokuapp.com/graphql',
     );
 
     _client = GraphQLClient(
-      cache: InMemoryCache(),
+      cache: GraphQLCache(),
       link: _httpLink,
     );
 
@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
                 ),
           ).copyWith(),
         ),
-        onGenerateRoute: (settings) => Router.onGenerateRoute(settings),
+        onGenerateRoute: onGenerateRoute,
         initialRoute: SearchScreen.routeName,
       ),
     );

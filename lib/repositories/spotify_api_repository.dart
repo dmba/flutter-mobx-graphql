@@ -1,4 +1,4 @@
-import 'package:either_option/either_option.dart';
+import 'package:either_dart/either.dart';
 import 'package:flutter_mobx_graphql/datasources/spotify_api_datasource.dart';
 import 'package:flutter_mobx_graphql/errors/exceptions.dart';
 import 'package:flutter_mobx_graphql/errors/failures.dart';
@@ -11,7 +11,7 @@ abstract class ISpotifyApiRepository {
 
 class SpotifyApiRepository implements ISpotifyApiRepository {
   SpotifyApiRepository(this.dataSource);
-  
+
   final ISpotifyApiDataSource dataSource;
 
   @override
