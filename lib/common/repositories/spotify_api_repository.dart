@@ -1,9 +1,4 @@
-import 'package:either_dart/either.dart';
-import 'package:flutter_mobx_graphql/datasources/spotify_api_datasource.dart';
-import 'package:flutter_mobx_graphql/errors/exceptions.dart';
-import 'package:flutter_mobx_graphql/errors/failures.dart';
-import 'package:flutter_mobx_graphql/models/models.dart';
-import 'package:graphql/client.dart';
+part of common;
 
 abstract class ISpotifyApiRepository {
   Future<Either<Failure, List<Artist>>> getArtists(String name);

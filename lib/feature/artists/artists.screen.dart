@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_mobx_graphql/screens/artists/stores/artists.store.dart';
-import 'package:flutter_mobx_graphql/screens/artists/widgets/artists_list.dart';
-import 'package:flutter_mobx_graphql/states.dart';
-import 'package:provider/provider.dart';
+part of artists;
 
 class ArtistsScreenArgs {
   final String name;
@@ -12,7 +7,7 @@ class ArtistsScreenArgs {
 }
 
 class ArtistsScreen extends StatefulWidget {
-  static const String routeName = "/artists-screen";
+  static const String routeName = '/artists-screen';
 
   final String name;
 
@@ -67,7 +62,7 @@ class _ArtistsScreenState extends State<ArtistsScreen> {
                       ),
                     ),
                     Text(
-                      "Results for \"$_name\"",
+                      'Results for \'$_name\'',
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ],
@@ -83,7 +78,7 @@ class _ArtistsScreenState extends State<ArtistsScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              "Searching...",
+                              'Searching...',
                               style: TextStyle(
                                 color: Colors.grey.shade600,
                               ),
@@ -111,7 +106,7 @@ class _ArtistsScreenState extends State<ArtistsScreen> {
                   child: Expanded(
                     child: Center(
                       child: Text(
-                        _store.errorMessage ?? "",
+                        _store.errorMessage ?? '',
                       ),
                     ),
                   ),

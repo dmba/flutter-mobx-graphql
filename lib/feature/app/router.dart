@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx_graphql/screens/artists/artists.screen.dart';
-import 'package:flutter_mobx_graphql/screens/search/search.screen.dart';
+part of app;
 
 PageRoute<T> onGenerateRoute<T>(RouteSettings settings) {
   if (settings.name == SearchScreen.routeName) {

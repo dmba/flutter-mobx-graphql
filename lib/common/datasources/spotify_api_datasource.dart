@@ -1,6 +1,4 @@
-import 'package:flutter_mobx_graphql/errors/failures.dart';
-import 'package:flutter_mobx_graphql/models/models.dart';
-import 'package:graphql/client.dart';
+part of common;
 
 abstract class ISpotifyApiDataSource {
   Future<List<Artist>> getArtists(String name);

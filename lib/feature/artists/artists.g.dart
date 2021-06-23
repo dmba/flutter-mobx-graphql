@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'artists.store.dart';
+part of artists;
 
 // **************************************************************************
 // StoreGenerator

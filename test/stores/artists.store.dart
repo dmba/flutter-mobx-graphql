@@ -1,8 +1,6 @@
 import 'package:either_dart/either.dart';
-import 'package:flutter_mobx_graphql/errors/failures.dart';
-import 'package:flutter_mobx_graphql/models/models.dart';
-import 'package:flutter_mobx_graphql/repositories/spotify_api_repository.dart';
-import 'package:flutter_mobx_graphql/screens/artists/stores/artists.store.dart';
+import 'package:flutter_mobx_graphql/common/common.dart';
+import 'package:flutter_mobx_graphql/feature/artists/artists.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

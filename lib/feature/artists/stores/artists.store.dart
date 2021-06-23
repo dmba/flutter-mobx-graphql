@@ -1,11 +1,4 @@
-import 'package:either_dart/either.dart';
-import 'package:flutter_mobx_graphql/errors/failures.dart';
-import 'package:flutter_mobx_graphql/models/models.dart';
-import 'package:flutter_mobx_graphql/repositories/spotify_api_repository.dart';
-import 'package:flutter_mobx_graphql/states.dart';
-import 'package:mobx/mobx.dart';
-
-part 'artists.store.g.dart';
+part of artists;
 
 class ArtistsStore = _ArtistsStore with _$ArtistsStore;
 

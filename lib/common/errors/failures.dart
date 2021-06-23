@@ -1,3 +1,5 @@
+part of common;
+
 abstract class Failure {
   final String message = "";
 }

@@ -1,7 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter_mobx_graphql/utils/json.dart';
-
-part 'models.g.dart';
+part of common;
 
 @immutable
 @jsonSerializable

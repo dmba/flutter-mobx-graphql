@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx_graphql/screens/artists/artists.screen.dart';
+part of search;
 
 class SearchScreen extends StatefulWidget {
-  static const String routeName = "/search-screen";
+  static const String routeName = '/search-screen';
 
   @override
   State<StatefulWidget> createState() {
@@ -32,7 +31,7 @@ class _SearchScreenState extends State<SearchScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Search Artists",
+                  'Search Artists',
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 Container(
@@ -51,7 +50,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         child: TextField(
                           controller: _queryController,
                           decoration: InputDecoration(
-                            hintText: "Search artist",
+                            hintText: 'Search artist',
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -90,7 +89,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 Container(
                   margin: const EdgeInsets.only(top: 36),
                   child: Text(
-                    "Top Artists",
+                    'Top Artists',
                     style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
@@ -103,19 +102,19 @@ class _SearchScreenState extends State<SearchScreen> {
                     children: <Widget>[
                       Container(
                         margin: const EdgeInsets.only(right: 4),
-                        child: Image.asset("assets/images/full_of_dreams.jpeg"),
+                        child: Image.asset('assets/images/full_of_dreams.jpeg'),
                       ),
                       Container(
                         margin: const EdgeInsets.all(12),
-                        child: Image.asset("assets/images/lover.png"),
+                        child: Image.asset('assets/images/lover.png'),
                       ),
                       Container(
                         margin: const EdgeInsets.all(12),
-                        child: Image.asset("assets/images/know.jpg"),
+                        child: Image.asset('assets/images/know.jpg'),
                       ),
                       Container(
                         margin: const EdgeInsets.all(4),
-                        child: Image.asset("assets/images/jukebox.jpeg"),
+                        child: Image.asset('assets/images/jukebox.jpeg'),
                       ),
                     ],
                   ),
