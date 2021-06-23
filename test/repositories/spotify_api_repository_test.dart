@@ -18,7 +18,7 @@ void main() {
     test('should RETURN [Failure] when the data source throws an [Exception]',
         () async {
       // Arrange
-      final name = 'Carpenters';
+      const name = 'Carpenters';
       when(_dataSource.getArtists(name)).thenAnswer(
         (_) async => throw NoResultsFoundException(),
       );
@@ -36,8 +36,8 @@ void main() {
         'should RETURN [List<Artist>] when the data source returns the results from the server',
         () async {
       // Arrange
-      final name = 'Carpenters';
-      final result = [
+      const name = 'Carpenters';
+      const result = [
         Artist(
           id: 'xxx1',
           name: 'The Carpenters',

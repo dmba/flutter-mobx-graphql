@@ -29,7 +29,7 @@ class SpotifyApiDataSource implements ISpotifyApiDataSource {
       final response = await _client.query(
         QueryOptions(
           document: gql(query),
-          variables: {
+          variables: <String, dynamic>{
             'name': name,
           },
         ),
@@ -46,8 +46,8 @@ class SpotifyApiDataSource implements ISpotifyApiDataSource {
       } else {
         throw NoResultsFoundFailure();
       }
-    } catch (e) {
-      throw e;
+    } catch (_) {
+      rethrow;
     }
   }
 }

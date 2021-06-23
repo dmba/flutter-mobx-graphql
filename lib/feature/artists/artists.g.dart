@@ -64,7 +64,7 @@ mixin _$ArtistsStore on _ArtistsStore, Store {
   final _$searchArtistsAsyncAction = AsyncAction('_ArtistsStore.searchArtists');
 
   @override
-  Future searchArtists(String name) {
+  Future<void> searchArtists(String name) {
     return _$searchArtistsAsyncAction.run(() => super.searchArtists(name));
   }
 

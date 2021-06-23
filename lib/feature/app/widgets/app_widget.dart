@@ -51,17 +51,17 @@ class _AppWidgetState extends State<AppWidget> {
           visualDensity: VisualDensity.adaptivePlatformDensity,
           textTheme: GoogleFonts.latoTextTheme(
             Theme.of(context).textTheme.copyWith(
-                  headline2: TextStyle(
+                  headline2: const TextStyle(
                     color: Colors.white,
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                   ),
-                  headline4: TextStyle(
+                  headline4: const TextStyle(
                     color: Colors.white,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
-                  bodyText1: TextStyle(
+                  bodyText1: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

@@ -7,14 +7,14 @@ class ArtistsScreenArgs {
 }
 
 class ArtistsScreen extends StatefulWidget {
-  static const String routeName = '/artists-screen';
-
-  final String name;
-
   const ArtistsScreen({
     Key? key,
     required this.name,
   }) : super(key: key);
+
+  static const String routeName = '/artists-screen';
+
+  final String name;
 
   @override
   State<StatefulWidget> createState() {
@@ -35,7 +35,7 @@ class _ArtistsScreenState extends State<ArtistsScreen> {
 
   @override
   void dispose() {
-    _store?.reset();
+    _store.reset();
     super.dispose();
   }
 
@@ -44,76 +44,74 @@ class _ArtistsScreenState extends State<ArtistsScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey.shade900,
-        body: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 12,
-                ),
-                child: Row(
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: Icon(
-                        Icons.arrow_back,
-                        size: 20,
-                      ),
-                    ),
-                    Text(
-                      'Results for \'$_name\'',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                  ],
-                ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(
+                top: 12,
               ),
-              Observer(
-                builder: (_) {
-                  switch (_store.state) {
-                    case StoreState.loading:
-                      return Container(
-                        margin: const EdgeInsets.only(top: 12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              'Searching...',
-                              style: TextStyle(
-                                color: Colors.grey.shade600,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    default:
-                      return Expanded(
-                        child: SingleChildScrollView(
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: ArtistsList(
-                              artists: _store.artistsResult ?? [],
+              child: Row(
+                children: <Widget>[
+                  IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      size: 20,
+                    ),
+                  ),
+                  Text(
+                    'Results for \'$_name\'',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ],
+              ),
+            ),
+            Observer(
+              builder: (_) {
+                switch (_store.state) {
+                  case StoreState.loading:
+                    return Container(
+                      margin: const EdgeInsets.only(top: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'Searching...',
+                            style: TextStyle(
+                              color: Colors.grey.shade600,
                             ),
                           ),
-                        ),
-                      );
-                  }
-                },
-              ),
-              Observer(
-                builder: (_) => Visibility(
-                  visible: _store.errorMessage != null,
-                  child: Expanded(
-                    child: Center(
-                      child: Text(
-                        _store.errorMessage ?? '',
+                        ],
                       ),
+                    );
+                  default:
+                    return Expanded(
+                      child: SingleChildScrollView(
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 20),
+                          child: ArtistsList(
+                            artists: _store.artistsResult ?? [],
+                          ),
+                        ),
+                      ),
+                    );
+                }
+              },
+            ),
+            Observer(
+              builder: (_) => Visibility(
+                visible: _store.errorMessage != null,
+                child: Expanded(
+                  child: Center(
+                    child: Text(
+                      _store.errorMessage ?? '',
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

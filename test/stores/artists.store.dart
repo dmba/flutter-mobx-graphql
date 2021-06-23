@@ -22,7 +22,7 @@ void main() {
         'should SET the [errorMessage] when the repository returns a [Failure]',
         () {
           // Arrange
-          final name = 'Carpenters';
+          const name = 'Carpenters';
           when(_repository.getArtists(name)).thenAnswer(
             (_) async => Left(NoResultsFoundFailure()),
           );
@@ -39,8 +39,8 @@ void main() {
         'should SET the [artistsResult] when the repository returns the results',
         () {
           // Arrange
-          final name = 'Carpenters';
-          final result = [
+          const name = 'Carpenters';
+          const result = [
             Artist(
               id: 'xxx1',
               name: 'The Carpenters',
@@ -53,7 +53,7 @@ void main() {
             ),
           ];
           when(_repository.getArtists(name)).thenAnswer(
-            (_) async => Right(result),
+            (_) async => const Right(result),
           );
 
           // Act

@@ -17,7 +17,7 @@ class ArtistsList extends StatelessWidget {
       ),
       shrinkWrap: true,
       itemCount: artists.length,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return _ArtistsListItem(
           artist: artists[index],
@@ -57,7 +57,7 @@ class _ArtistsListItem extends StatelessWidget {
                 placeholder: (context, url) => Container(
                   color: Colors.grey.shade800,
                 ),
-                errorWidget: (context, url, error) => Container(
+                errorWidget: (context, url, dynamic error) => Container(
                   color: Colors.grey.shade600,
                 ),
               ),
@@ -74,7 +74,7 @@ class _ArtistsListItem extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     artist.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

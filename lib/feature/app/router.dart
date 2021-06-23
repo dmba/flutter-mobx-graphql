@@ -3,7 +3,7 @@ part of app;
 PageRoute<T> onGenerateRoute<T>(RouteSettings settings) {
   if (settings.name == SearchScreen.routeName) {
     return MaterialPageRoute(
-      builder: (_) => SearchScreen(),
+      builder: (_) => const SearchScreen(),
     );
   } else if (settings.name == ArtistsScreen.routeName) {
     final args = settings.arguments as ArtistsScreenArgs;
@@ -15,9 +15,7 @@ PageRoute<T> onGenerateRoute<T>(RouteSettings settings) {
     );
   } else {
     return MaterialPageRoute(
-      builder: (_) => Container(
-        child: Text("No route found"),
-      ),
+      builder: (_) => const Text("No route found"),
     );
   }
 }

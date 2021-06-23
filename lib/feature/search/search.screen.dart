@@ -1,6 +1,10 @@
 part of search;
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({
+    Key? key,
+  }) : super(key: key);
+
   static const String routeName = '/search-screen';
 
   @override
@@ -49,7 +53,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                         child: TextField(
                           controller: _queryController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: 'Search artist',
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -65,12 +69,12 @@ class _SearchScreenState extends State<SearchScreen> {
                         child: Container(
                           margin: const EdgeInsets.only(right: 12),
                           child: InkWell(
-                            child: Icon(
+                            child: const Icon(
                               Icons.search,
                               color: Colors.white,
                             ),
                             onTap: () {
-                              if (_queryController.text.length > 0) {
+                              if (_queryController.text.isNotEmpty) {
                                 Navigator.pushNamed(
                                   context,
                                   ArtistsScreen.routeName,
@@ -98,7 +102,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: GridView.count(
                     shrinkWrap: true,
                     crossAxisCount: 2,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     children: <Widget>[
                       Container(
                         margin: const EdgeInsets.only(right: 4),

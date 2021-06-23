@@ -4,7 +4,7 @@ class ArtistsStore = _ArtistsStore with _$ArtistsStore;
 
 abstract class _ArtistsStore with Store {
   _ArtistsStore(this._repository) {
-    this.init();
+    init();
   }
 
   final ISpotifyApiRepository _repository;
@@ -13,7 +13,7 @@ abstract class _ArtistsStore with Store {
   /// To re-initialize its state
   @action
   void reset() {
-    this.init();
+    init();
   }
 
   @action
@@ -51,7 +51,7 @@ abstract class _ArtistsStore with Store {
   }
 
   @action
-  searchArtists(String name) async {
+  Future<void> searchArtists(String name) async {
     final future = _artistsFuture = ObservableFuture(
       _repository.getArtists(name),
     );
@@ -60,7 +60,7 @@ abstract class _ArtistsStore with Store {
 
     artistsResult = either.fold(
       (l) {
-        this.reset();
+        reset();
         errorMessage = l.message;
         return null;
       },
